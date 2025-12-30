@@ -18,30 +18,33 @@ const categories = [
   { id: "goods-lift", label: "Goods Lift" },
   { id: "panoramic-lift", label: "Panoramic Lift" },
   { id: "dumbwaiter-lift", label: "Dumbwaiter Lift" },
+{ id: "glass-lift", label: "Glass Lift" },
 ]
 
 /* =========================
    ELEVATOR TYPES
 ========================= */
 const elevatorTypes = [
-  { id: "home-lift", title: "Home Lift" },
-  { id: "hospital", title: "Hospital Lift" },
-  { id: "goods-lift", title: "Goods Lift" },
-  { id: "panoramic-lift", title: "Panoramic Lift" },
-  { id: "dumbwaiter-lift", title: "Dumbwaiter Lift" },
+  { id: "home-lift", title: "Home Lift", count: 12 },
+  { id: "hospital", title: "Hospital Lift", count: 4 },
+  { id: "goods-lift", title: "Goods Lift", count:  8},
+  { id: "panoramic-lift", title: "Panoramic Lift", count: 7 },
+  { id: "dumbwaiter-lift", title: "Dumbwaiter Lift", count: 5 },
+  { id: "glass-lift", title: "Glass Lift", count: 7 },
 ]
 
 /* =========================
    GALLERY IMAGES
 ========================= */
 const galleryImages = elevatorTypes.flatMap((type) =>
-  [1, 2, 3, 4].map((num) => ({
-    id: `${type.id}-${num}`,
-    src: `/images/${type.id}/${num}.jpeg`,
+  Array.from({ length: type.count }, (_, i) => ({
+    id: `${type.id}-${i + 1}`,
+    src: `/images/${type.id}/${i + 1}.jpeg`,
     title: type.title,
     category: type.id,
   }))
 )
+
 
 export default function GalleryPage() {
   const [selectedCategory, setSelectedCategory] = useState("all")
