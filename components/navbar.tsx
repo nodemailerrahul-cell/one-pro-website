@@ -4,6 +4,7 @@ import Link from "next/link"
 import { useState, useEffect } from "react"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import Image from "next/image"
 
 interface NavbarProps {
   onQuoteClick?: () => void
@@ -37,12 +38,17 @@ export function Navbar({ onQuoteClick }: NavbarProps) {
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center transition-transform group-hover:scale-110">
-              <span className="text-primary-foreground font-bold text-xl">OP</span>
-            </div>
-            <span className="font-bold text-xl">One Pro Elevators</span>
-          </Link>
+         <Link href="/" className="flex items-center gap-3 group">
+  <Image
+    src="/logo.png"
+    alt="One Pro Elevators Logo"
+    width={140}
+    height={40}
+    priority
+    className="h-16 w-auto object-contain"
+  />
+</Link>
+
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">

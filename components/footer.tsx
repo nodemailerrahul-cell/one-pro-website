@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin } from "lucide-react"
 
 export function Footer() {
@@ -8,12 +9,17 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="space-y-4">
-            <div className="flex items-center gap-2">
-              <div className="w-10 h-10 bg-primary-foreground/10 rounded-lg flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-xl">OP</span>
-              </div>
-              <span className="font-bold text-lg">One Pro Elevators</span>
-            </div>
+            <div className="flex items-center">
+  <Image
+    src="/logo.png"
+    alt="One Pro Elevators Logo"
+    width={140}
+    height={40}
+    priority
+    className="h-16 w-auto object-contain invert brightness-0 contrast-200"
+  />
+</div>
+
             <p className="text-primary-foreground/80 text-sm leading-relaxed">
               Leading the vertical transportation industry with innovative elevator solutions and exceptional service.
             </p>

@@ -55,70 +55,74 @@ export default function HomePage() {
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-primary via-primary/95 to-accent/20">
-        <div className="absolute inset-0 bg-[url('/modern-elevator-shaft-architecture.jpg')] bg-cover bg-center opacity-10" />
+  {/* Video Background */}
+  <video
+    className="absolute inset-0 w-full h-full object-cover opacity-20"
+    src="/hero.mp4"
+    autoPlay
+    loop
+    muted
+    playsInline
+  />
 
-        <div className="container mx-auto px-4 py-32 relative z-10">
-          <div className="max-w-4xl mx-auto text-center space-y-8">
-            <div className="inline-block animate-slide-in-up">
-              <span className="px-4 py-2 bg-accent/20 text-primary-foreground rounded-full text-sm font-medium">
-                Elevating Excellence Since 1995
-              </span>
-            </div>
+  {/* Optional dark overlay for better text contrast */}
+  <div className="absolute inset-0 bg-black/20" />
 
-            <h1
-              className="text-5xl md:text-7xl font-bold text-primary-foreground leading-tight animate-slide-in-up text-balance"
-              style={{ animationDelay: "0.1s" }}
-            >
-              Innovative Elevator Solutions
-            </h1>
+  <div className="container mx-auto px-4 py-32 relative z-10">
+    <div className="max-w-4xl mx-auto text-center space-y-8">
+      <div className="inline-block animate-slide-in-up">
+        <span className="px-4 py-2 bg-accent/20 text-primary-foreground rounded-full text-sm font-medium">
+          Elevating Excellence Since 1995
+        </span>
+      </div>
 
-            <p
-              className="text-xl md:text-2xl text-primary-foreground/90 leading-relaxed animate-slide-in-up max-w-3xl mx-auto"
-              style={{ animationDelay: "0.2s" }}
-            >
-              Premium manufacturing, installation, and service for vertical transportation systems that move your world
-              upward.
-            </p>
+      <h1
+        className="text-5xl md:text-7xl font-bold text-primary-foreground leading-tight animate-slide-in-up text-balance"
+        style={{ animationDelay: "0.1s" }}
+      >
+        Innovative Elevator Solutions
+      </h1>
 
-            <div
-              className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-slide-in-up"
-              style={{ animationDelay: "0.3s" }}
-            >
-              <Button
-                size="lg"
-                variant="secondary"
-                className="text-lg px-8 py-6 group"
-                onClick={() => setIsQuotePopupOpen(true)}
-              >
-                Get Free Quote
-                <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-              </Button>
-              <Button
-                asChild
-                size="lg"
-                variant="outline"
-                className="text-lg px-8 py-6 border-primary-foreground/20 bg-transparent text-primary-foreground hover:bg-primary-foreground/10"
-              >
-                <Link href="/products">Explore Products</Link>
-              </Button>
-            </div>
-          </div>
-        </div>
+      <p
+        className="text-xl md:text-2xl text-primary-foreground/90 leading-relaxed animate-slide-in-up max-w-3xl mx-auto"
+        style={{ animationDelay: "0.2s" }}
+      >
+        Premium manufacturing, installation, and service for vertical
+        transportation systems that move your world upward.
+      </p>
 
-        {/* Floating Elements */}
-        <div
-          className="absolute bottom-10 left-10 w-20 h-20 bg-accent/20 rounded-full animate-float"
-          style={{ animationDelay: "0s" }}
-        />
-        <div
-          className="absolute top-32 right-20 w-32 h-32 bg-primary-foreground/10 rounded-full animate-float"
-          style={{ animationDelay: "2s" }}
-        />
-        <div
-          className="absolute bottom-32 right-32 w-16 h-16 bg-accent/30 rounded-full animate-float"
-          style={{ animationDelay: "4s" }}
-        />
-      </section>
+      <div
+        className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-slide-in-up"
+        style={{ animationDelay: "0.3s" }}
+      >
+        <Button
+          size="lg"
+          variant="secondary"
+          className="text-lg px-8 py-6 group"
+          onClick={() => setIsQuotePopupOpen(true)}
+        >
+          Get Free Quote
+          <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+        </Button>
+
+        <Button
+          asChild
+          size="lg"
+          variant="outline"
+          className="text-lg px-8 py-6 border-primary-foreground/20 bg-transparent text-primary-foreground hover:bg-primary-foreground/10"
+        >
+          <Link href="/products">Explore Products</Link>
+        </Button>
+      </div>
+    </div>
+  </div>
+
+  {/* Floating Elements */}
+  <div className="absolute bottom-10 left-10 w-20 h-20 bg-accent/20 rounded-full animate-float" />
+  <div className="absolute top-32 right-20 w-32 h-32 bg-primary-foreground/10 rounded-full animate-float" />
+  <div className="absolute bottom-32 right-32 w-16 h-16 bg-accent/30 rounded-full animate-float" />
+</section>
+
 
       {/* Stats Section */}
       <section className="py-20 bg-background" ref={statsRef}>
