@@ -24,7 +24,7 @@ export function Footer() {
               Leading the vertical transportation industry with innovative elevator solutions and exceptional service.
             </p>
             <div className="flex gap-4">
-              <a href="#" className="hover:text-accent transition-colors">
+              <a href="https://www.facebook.com/share/14KeoHgnXcW/" className="hover:text-accent transition-colors">
                 <Facebook size={20} />
               </a>
               <a href="https://x.com/oneproelevators" className="hover:text-accent transition-colors">
