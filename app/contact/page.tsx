@@ -201,19 +201,10 @@ alert("Form has been submitted. We will contact you soon.")
                       <Input
                         id="phone"
                         type="tel"
-                        placeholder="+1 (555) 000-0000"
+                        placeholder="+91 6363053425"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                         required
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="company">Company Name</Label>
-                      <Input
-                        id="company"
-                        placeholder="Your Company"
-                        value={formData.company}
-                        onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                       />
                     </div>
                     <div className="space-y-2">
@@ -268,7 +259,7 @@ alert("Form has been submitted. We will contact you soon.")
                       <MapPin className="w-6 h-6 text-accent" />
                     </div>
                     <div>
-                      <h3 className="font-bold mb-1">Headquarters</h3>
+                      <h3 className="font-bold mb-1">Office</h3>
                       <p className="text-muted-foreground">
                        #63, 7th cross 
                         <br />
