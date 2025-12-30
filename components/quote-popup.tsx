@@ -75,7 +75,7 @@ export function QuotePopup({ isOpen, onClose }: QuotePopupProps) {
          
 
           <DialogTitle className="text-2xl font-bold">
-            Request a Free Quote
+            Request a Free Quote & Site Visit
           </DialogTitle>
           <DialogDescription className="text-primary-foreground/80">
             Share your requirements — we’ll contact you within 24 hours.

@@ -6,6 +6,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { useState } from "react"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
+import Link from "next/link"
 
 
 export default function ServicesPage() {
@@ -175,9 +176,11 @@ export default function ServicesPage() {
           Connect with us today to discuss your project needs and receive a personalized quote for installation or
           maintenance.
         </p>
+        <Link href={'/contact'}>
         <Button size="lg" variant="secondary" className="font-bold">
           Contact us Now
         </Button>
+        </Link>
       </section>
     
    

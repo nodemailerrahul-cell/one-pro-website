@@ -27,7 +27,53 @@ import { useEffect, useRef, useState } from "react"
 
 export default function HomePage() {
   const statsRef = useRef<HTMLDivElement>(null)
+  const [statsVisible, setStatsVisible] = useState(false)
   const [isQuotePopupOpen, setIsQuotePopupOpen] = useState(false)
+  
+  useEffect(() => {
+  if (!statsRef.current) return
+
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        setStatsVisible(true)
+        observer.disconnect()
+      }
+    },
+    { threshold: 0.4 }
+  )
+
+  observer.observe(statsRef.current)
+
+  return () => observer.disconnect()
+}, [])
+
+const useCountUp = (target: number, active: boolean, duration = 1500) => {
+  const [count, setCount] = useState(0)
+
+  useEffect(() => {
+    if (!active) return
+
+    let startTime: number | null = null
+
+    const animate = (time: number) => {
+      if (!startTime) startTime = time
+      const progress = Math.min((time - startTime) / duration, 1)
+      setCount(Math.floor(progress * target))
+      if (progress < 1) requestAnimationFrame(animate)
+    }
+
+    requestAnimationFrame(animate)
+  }, [active, target, duration])
+
+  return count
+}
+
+const installations = useCountUp(800, statsVisible)
+const experience = useCountUp(30, statsVisible)
+const satisfaction = useCountUp(99, statsVisible)
+const support = useCountUp(24, statsVisible)
+
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -49,103 +95,102 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen">
-      <Navbar onQuoteClick={() => setIsQuotePopupOpen(true)} />
-      <FloatingCTA onQuoteClick={() => setIsQuotePopupOpen(true)} />
+      <Navbar onQuoteClick={() => setIsQuotePopupOpen(true)} />x
+      <FloatingCTA />
       <QuotePopup isOpen={isQuotePopupOpen} onClose={() => setIsQuotePopupOpen(false)} />
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-primary via-primary/95 to-accent/20">
+{/* Hero Section */}
+<section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
   {/* Video Background */}
   <video
-    className="absolute inset-0 w-full h-full object-cover opacity-20"
-    src="/hero.mp4"
+    className="absolute inset-0 w-full h-full object-cover"
+    src="/hero-1.mp4"
     autoPlay
     loop
     muted
     playsInline
   />
-
-  {/* Optional dark overlay for better text contrast */}
-  <div className="absolute inset-0 bg-black/20" />
+<div className="absolute inset-0 bg-black/40 z-[1]" />
 
   <div className="container mx-auto px-4 py-32 relative z-10">
     <div className="max-w-4xl mx-auto text-center space-y-8">
-      <div className="inline-block animate-slide-in-up">
-        <span className="px-4 py-2 bg-accent/20 text-primary-foreground rounded-full text-sm font-medium">
-          Elevating Excellence Since 1995
-        </span>
-      </div>
+     <span className="inline-block px-4 py-2 bg-primary text-white rounded-full text-sm font-medium">
+  Welcome to One Pro Elevators
+</span>
 
-      <h1
-        className="text-5xl md:text-7xl font-bold text-primary-foreground leading-tight animate-slide-in-up text-balance"
-        style={{ animationDelay: "0.1s" }}
-      >
-        Innovative Elevator Solutions
-      </h1>
+<h1 className="text-5xl md:text-7xl font-bold text-white leading-tight">
+  Built on Quality. Driven by Safety.
+</h1>
 
-      <p
-        className="text-xl md:text-2xl text-primary-foreground/90 leading-relaxed animate-slide-in-up max-w-3xl mx-auto"
-        style={{ animationDelay: "0.2s" }}
-      >
-        Premium manufacturing, installation, and service for vertical
-        transportation systems that move your world upward.
-      </p>
+<p className="text-xl md:text-2xl text-white/90 leading-relaxed max-w-3xl mx-auto">
+  Designing, manufacturing, and servicing reliable elevator solutions that
+  elevate residential, commercial, and industrial spaces across India.
+</p>
 
-      <div
-        className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-slide-in-up"
-        style={{ animationDelay: "0.3s" }}
-      >
+
+      <div className="flex flex-col sm:flex-row gap-4 justify-center">
         <Button
           size="lg"
-          variant="secondary"
-          className="text-lg px-8 py-6 group"
+          className="text-lg px-8 py-6"
           onClick={() => setIsQuotePopupOpen(true)}
         >
           Get Free Quote
-          <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+          <ArrowRight className="ml-2" />
         </Button>
 
         <Button
           asChild
           size="lg"
           variant="outline"
-          className="text-lg px-8 py-6 border-primary-foreground/20 bg-transparent text-primary-foreground hover:bg-primary-foreground/10"
+          className="text-lg px-8 py-6 border-white text-black hover:bg-white hover:text-black"
         >
           <Link href="/products">Explore Products</Link>
         </Button>
       </div>
     </div>
   </div>
-
-  {/* Floating Elements */}
-  <div className="absolute bottom-10 left-10 w-20 h-20 bg-accent/20 rounded-full animate-float" />
-  <div className="absolute top-32 right-20 w-32 h-32 bg-primary-foreground/10 rounded-full animate-float" />
-  <div className="absolute bottom-32 right-32 w-16 h-16 bg-accent/30 rounded-full animate-float" />
 </section>
 
 
+
       {/* Stats Section */}
-      <section className="py-20 bg-background" ref={statsRef}>
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {[
-              { number: "5000+", label: "Installations" },
-              { number: "30+", label: "Years Experience" },
-              { number: "98%", label: "Client Satisfaction" },
-              { number: "24/7", label: "Support Available" },
-            ].map((stat, index) => (
-              <div
-                key={index}
-                className="text-center animate-on-scroll opacity-0 p-6 rounded-lg hover:bg-muted transition-colors"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="text-4xl md:text-5xl font-bold text-accent mb-2">{stat.number}</div>
-                <div className="text-muted-foreground">{stat.label}</div>
-              </div>
-            ))}
-          </div>
+    <section className="py-20 bg-background" ref={statsRef}>
+  <div className="container mx-auto px-4">
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+
+      <div className="text-center animate-on-scroll opacity-0 p-6 rounded-lg hover:bg-muted transition-colors">
+        <div className="text-4xl md:text-5xl font-bold text-accent mb-2">
+          {installations}+
         </div>
-      </section>
+        <div className="text-muted-foreground">Installations</div>
+      </div>
+
+      <div className="text-center animate-on-scroll opacity-0 p-6 rounded-lg hover:bg-muted transition-colors">
+        <div className="text-4xl md:text-5xl font-bold text-accent mb-2">
+          {experience}+
+        </div>
+        <div className="text-muted-foreground">Years Experience</div>
+      </div>
+
+      <div className="text-center animate-on-scroll opacity-0 p-6 rounded-lg hover:bg-muted transition-colors">
+        <div className="text-4xl md:text-5xl font-bold text-accent mb-2">
+          {satisfaction}%
+        </div>
+        <div className="text-muted-foreground">Client Satisfaction</div>
+      </div>
+
+      <div className="text-center animate-on-scroll opacity-0 p-6 rounded-lg hover:bg-muted transition-colors">
+        <div className="text-4xl md:text-5xl font-bold text-accent mb-2">
+          {support}/7
+        </div>
+        <div className="text-muted-foreground">Support Available</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 
       {/* Services Section */}
       <section className="py-20 bg-muted/50">
@@ -265,45 +310,120 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="py-20 bg-muted/50">
-        <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="animate-on-scroll opacity-0">
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-balance">Why Choose One Pro Elevators?</h2>
-              <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-                We combine decades of expertise with cutting-edge technology to deliver elevator solutions that exceed
-                expectations.
-              </p>
-              <div className="space-y-4">
-                {[
-                  { icon: <Award className="w-6 h-6" />, text: "Industry-leading certifications and awards" },
-                  { icon: <Users className="w-6 h-6" />, text: "Experienced team of 200+ professionals" },
-                  { icon: <Zap className="w-6 h-6" />, text: "Energy-efficient and eco-friendly solutions" },
-                  { icon: <TrendingUp className="w-6 h-6" />, text: "Proven track record of 5000+ installations" },
-                ].map((item, index) => (
-                  <div key={index} className="flex items-center gap-4 p-4 bg-background rounded-lg">
-                    <div className="text-accent">{item.icon}</div>
-                    <span className="font-medium">{item.text}</span>
-                  </div>
-                ))}
+<section className="py-24 bg-muted/50 relative overflow-hidden">
+  {/* subtle background accent */}
+  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/10 pointer-events-none" />
+
+  <div className="container mx-auto px-4 relative z-10">
+    <div className="grid lg:grid-cols-2 gap-16 items-center">
+      {/* LEFT CONTENT */}
+      <div className="animate-on-scroll opacity-0">
+        <span className="inline-block mb-4 px-4 py-2 rounded-full bg-accent/15 text-accent font-semibold text-sm">
+          Why One Pro Elevators
+        </span>
+
+        <h2 className="text-4xl md:text-5xl font-bold mb-6 text-balance">
+          Engineering Vertical Mobility with Precision & Trust
+        </h2>
+
+        <p className="text-lg text-muted-foreground leading-relaxed mb-10 max-w-xl">
+          At One Pro Elevators, we blend decades of industry expertise with modern
+          engineering to deliver safe, reliable, and future-ready elevator solutions
+          for homes, hospitals, industries, and high-rise buildings.
+        </p>
+
+        {/* FEATURES */}
+        <div className="space-y-4">
+          {[
+            {
+              icon: <Award className="w-6 h-6" />,
+              title: "Certified Quality & Compliance",
+              text: "ISO-certified processes, global safety standards, and award-winning designs.",
+            },
+            {
+              icon: <Users className="w-6 h-6" />,
+              title: "Expert Engineering Team",
+              text: "200+ skilled professionals across design, installation, and servicing.",
+            },
+            {
+              icon: <Zap className="w-6 h-6" />,
+              title: "Energy-Efficient Technology",
+              text: "Low-power drives, regenerative systems, and eco-friendly components.",
+            },
+            {
+              icon: <TrendingUp className="w-6 h-6" />,
+              title: "Proven Track Record",
+              text: "5,000+ successful installations across residential, commercial & industrial projects.",
+            },
+          ].map((item, index) => (
+            <div
+              key={index}
+              className="flex gap-4 p-5 bg-background/80 backdrop-blur rounded-xl shadow-sm hover:shadow-md transition"
+            >
+              <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-accent/15 text-accent">
+                {item.icon}
               </div>
-              <Button size="lg" className="mt-8 group" onClick={() => setIsQuotePopupOpen(true)}>
-                Get Started
-                <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-              </Button>
+              <div>
+                <h4 className="font-semibold mb-1">{item.title}</h4>
+                <p className="text-sm text-muted-foreground">{item.text}</p>
+              </div>
             </div>
-            <div className="animate-on-scroll opacity-0" style={{ animationDelay: "0.2s" }}>
-              <div className="relative h-[600px] rounded-lg overflow-hidden shadow-2xl">
-                <img
-                  src="/modern-elevator-engineering.jpg"
-                  alt="One Pro Elevators Engineering"
-                  className="w-full h-full object-cover"
-                />
-              </div>
+          ))}
+        </div>
+
+        {/* CTA + STATS */}
+        <div className="mt-10 flex flex-col sm:flex-row sm:items-center gap-6">
+          <Button
+            size="lg"
+            className="group"
+            onClick={() => setIsQuotePopupOpen(true)}
+          >
+            Get a Free Consultation
+            <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+          </Button>
+
+          <div className="flex gap-6 text-sm">
+            <div>
+              <p className="text-2xl font-bold">25+</p>
+              <p className="text-muted-foreground">Years Experience</p>
+            </div>
+            <div>
+              <p className="text-2xl font-bold">5K+</p>
+              <p className="text-muted-foreground">Installations</p>
+            </div>
+            <div>
+              <p className="text-2xl font-bold">24/7</p>
+              <p className="text-muted-foreground">Service Support</p>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+
+      {/* RIGHT IMAGE */}
+      <div
+        className="animate-on-scroll opacity-0"
+        style={{ animationDelay: "0.2s" }}
+      >
+        <div className="relative h-[600px] rounded-2xl overflow-hidden shadow-2xl">
+          <img
+            src="/modern-elevator-engineering.jpg"
+            alt="One Pro Elevators Engineering"
+            className="w-full h-full object-cover scale-105 hover:scale-100 transition-transform duration-700"
+          />
+
+          {/* floating badge */}
+          <div className="absolute bottom-6 left-6 bg-background/90 backdrop-blur px-5 py-4 rounded-xl shadow-lg">
+            <p className="font-semibold">Trusted by Builders & Architects</p>
+            <p className="text-sm text-muted-foreground">
+              Residential • Commercial • Industrial
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">

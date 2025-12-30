@@ -1,163 +1,307 @@
 "use client"
 
+import { useState } from "react"
+import { motion } from "framer-motion"
+import {
+  ArrowRight,
+  Gauge,
+  Users,
+  ShieldCheck,
+  Settings,
+  Building2
+} from "lucide-react"
+
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { QuotePopup } from "@/components/quote-popup"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { ArrowRight, ChevronRight } from "lucide-react"
-import { useState } from "react"
-import { motion } from "framer-motion"
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+} from "@/components/ui/card"
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog"
+
+/* =========================
+   PRODUCTS
+========================= */
 
 const products = [
   {
     title: "Passenger Elevator",
-    description: "Standard high-speed vertical transport for residential and commercial buildings.",
-    features: ["Smooth operation", "Energy efficient", "Smart control"],
-    image: "/luxury-passenger-elevator-interior.jpg",
+    image: "/pass.jpg",
+    description: "High-speed elevators for residential and commercial buildings.",
+    highlights: [
+      { icon: Gauge, value: "Up to 1 m/s" },
+      { icon: Users, value: "6–20 Persons" },
+      { icon: ShieldCheck, value: "ARD + UCM" },
+      { icon: Settings, value: "MR / MRL" },
+    ],
+    specs: {
+      Speed: "Up to 1 m/s",
+      Capacity: "408 – 1600 kg",
+      Material: "SS 304 Grade (1.2mm)",
+      Drive: "Traction",
+      Control: "VVVF",
+      Power: "415V, 3 Phase",
+    },
   },
+
   {
     title: "Goods Elevator",
-    description: "Heavy-duty lifting solutions for warehouses, factories, and retail environments.",
-    features: ["High capacity", "Durable build", "Safety interlocks"],
-    image: "/industrial-freight-elevator.jpg",
+    image: "/images/goods-lift/1.jpeg",
+    description: "Heavy-duty elevators for industrial and warehouse use.",
+    highlights: [
+      { icon: Users, value: "500 kg +" },
+      { icon: Gauge, value: "0.5 m/s" },
+      { icon: Settings, value: "MR / MRL" },
+      { icon: Building2, value: "Industrial" },
+    ],
+    specs: {
+      Capacity: "500 kg onwards",
+      Speed: "Up to 0.5 m/s",
+      Drive: "Traction / Hydraulic",
+      Cabin: "MS / SS",
+      Usage: "Industrial & Maintenance",
+    },
   },
+
   {
     title: "Hospital Elevator",
-    description: "Spacious, smooth, and reliable transport optimized for stretchers and medical staff.",
-    features: ["Stretcher compatible", "Emergency priority", "Hygienic interiors"],
     image: "/hospital-stretcher-elevator.jpg",
+    description: "Smooth and hygienic elevators for patient transport.",
+    highlights: [
+      { icon: Users, value: "13 Persons" },
+      { icon: Gauge, value: "1 m/s" },
+      { icon: ShieldCheck, value: "Emergency Mode" },
+      { icon: Settings, value: "MR / MRL" },
+    ],
+    specs: {
+      Capacity: "884 kg",
+      Speed: "0.75 – 1 m/s",
+      Cabin: "SS Hygienic Finish",
+      Stretcher: "Compatible",
+      Priority: "Emergency Operation",
+    },
   },
+
   {
     title: "Home Elevator",
-    description: "Compact and elegant residential lifts designed to enhance accessibility and luxury.",
-    features: ["Space-saving", "Quiet operation", "Custom finishes"],
-    image: "/modern-home-residential-elevator.jpg",
+    image: "/images/home-lift/1.jpeg",
+    description: "Compact elevators designed for villas and private homes.",
+    highlights: [
+      { icon: Users, value: "6 Persons" },
+      { icon: Gauge, value: "1 m/s" },
+      { icon: Settings, value: "Single / 3 Phase" },
+      { icon: ShieldCheck, value: "Safe & Silent" },
+    ],
+    specs: {
+      Capacity: "408 kg",
+      Speed: "0.75 – 1 m/s",
+      Power: "Single / Three Phase",
+      Customization: "Fully Customizable",
+      Type: "MR / MRL",
+    },
   },
-  {
-    title: "Hotel Elevator",
-    description: "High-performance lifts with premium aesthetics tailored for the hospitality industry.",
-    features: ["Fast response", "Luxury cabin", "Keycard access"],
-    image: "/luxury-hotel-elevator-lobby.jpg",
-  },
+
   {
     title: "Panoramic Elevator",
-    description: "Stunning glass elevators providing a scenic experience for malls and high-rises.",
-    features: ["Glass enclosure", "Architectural focus", "Scenic views"],
-    image: "/scenic-glass-panoramic-elevator.jpg",
+    image: "/images/panoramic-lift/2.jpeg",
+    description: "Architectural elevators with scenic glass views.",
+    highlights: [
+      { icon: Building2, value: "Malls / Hotels" },
+      { icon: Users, value: "6–10 Persons" },
+      { icon: Gauge, value: "1 m/s" },
+      { icon: Settings, value: "Custom Shapes" },
+    ],
+    specs: {
+      Capacity: "408 – 1000 kg",
+      Speed: "0.75 – 1 m/s",
+      Structure: "Round / Square / Triangle",
+      Glass: "Laminated / Toughened",
+      Type: "MR / MRL",
+    },
   },
+
   {
-    title: "Dumbwaiter",
-    description: "Small freight elevators for kitchens, libraries, and hospitals to move small items.",
-    features: ["Compact size", "Easy operation", "Stainless steel"],
-    image: "/kitchen-dumbwaiter-lift.jpg",
+    title: "Glass Lift",
+    image: "/images/glass-lift/2.jpeg",
+    description: "Fully or semi-glass elevators with modern aesthetics.",
+    highlights: [
+      { icon: Building2, value: "Showrooms" },
+      { icon: Users, value: "Custom" },
+      { icon: Gauge, value: "1 m/s" },
+      { icon: ShieldCheck, value: "Safety Glass" },
+    ],
+    specs: {
+      Structure: "Full / Semi Glass",
+      Glass: "Laminated Safety Glass",
+      Speed: "Up to 1 m/s",
+      Application: "Commercial & Premium Homes",
+    },
   },
+
   {
     title: "Hydraulic Elevator",
-    description: "Cost-effective lifting solution for low to mid-rise buildings with smooth operation.",
-    features: ["Cost effective", "Reliable drive", "Low maintenance"],
     image: "/hydraulic-elevator-mechanism.jpg",
+    description: "Cost-effective solution for low-rise buildings.",
+    highlights: [
+      { icon: Gauge, value: "0.5 m/s" },
+      { icon: Users, value: "408–2000 kg" },
+      { icon: Settings, value: "Hydraulic Drive" },
+      { icon: ShieldCheck, value: "Low Maintenance" },
+    ],
+    specs: {
+      Speed: "Up to 0.5 m/s",
+      Capacity: "408 – 2000 kg",
+      Floors: "Up to 6",
+      Type: "MRL",
+      Usage: "Low-rise Buildings",
+    },
+  },
+
+  {
+    title: "Dumbwaiter",
+    image: "/kitchen-dumbwaiter-lift.jpg",
+    description: "Small service elevators for goods and food transport.",
+    highlights: [
+      { icon: Building2, value: "Kitchens" },
+      { icon: Users, value: "Small Loads" },
+      { icon: Settings, value: "Manual / Auto" },
+      { icon: ShieldCheck, value: "Compact" },
+    ],
+    specs: {
+      Usage: "Food & Small Goods",
+      Material: "Stainless Steel",
+      Operation: "Simple Push Button",
+      Installation: "Space Saving",
+    },
   },
 ]
 
 export default function ProductsPage() {
-  const [isQuotePopupOpen, setIsQuotePopupOpen] = useState(false)
+  const [isQuoteOpen, setIsQuoteOpen] = useState(false)
+  const [activeProduct, setActiveProduct] = useState<any>(null)
 
   return (
-    <div className="bg-background text-foreground min-h-screen">
-      <Navbar onQuoteClick={() => setIsQuotePopupOpen(true)} />
-      <QuotePopup isOpen={isQuotePopupOpen} onClose={() => setIsQuotePopupOpen(false)} />
+    <div className="min-h-screen bg-background">
+      <Navbar onQuoteClick={() => setIsQuoteOpen(true)} />
+      <QuotePopup isOpen={isQuoteOpen} onClose={() => setIsQuoteOpen(false)} />
 
-      <section className="pt-32 pb-20 px-4 md:px-8 bg-primary/5">
-        <div className="max-w-7xl mx-auto text-center space-y-6">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <h1 className="text-4xl md:text-6xl font-bold text-primary tracking-tight">
-              Vertical Transportation Solutions
-            </h1>
-            <p className="mt-6 text-xl text-muted-foreground max-w-3xl mx-auto italic">
-              Explore our comprehensive range of high-performance elevator systems designed for safety, speed, and
-              elegance.
-            </p>
-          </motion.div>
-        </div>
+      {/* HERO */}
+      <section className="pt-32 pb-16 text-center">
+        <h1 className="text-4xl md:text-6xl font-bold text-primary">
+          Elevator Solutions
+        </h1>
+        <p className="mt-4 text-muted-foreground max-w-2xl mx-auto text-lg">
+          Engineered for safety, performance and elegance.
+        </p>
       </section>
 
-      <section className="py-24 px-4 md:px-8 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {products.map((product, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-            >
-              <Card className="group overflow-hidden border-primary/10 bg-secondary/30 backdrop-blur-sm hover:border-primary/50 transition-all duration-300 h-full flex flex-col">
-                <div className="aspect-video relative overflow-hidden">
-                  <img
-                    src={product.image || "/placeholder.svg"}
-                    alt={product.title}
-                    className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      {/* GRID */}
+      <section className="pb-24 max-w-7xl mx-auto px-4 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+        {products.map((product, index) => (
+          <motion.div
+            key={product.title}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            {/* CARD */}
+            <Card className="h-full flex flex-col rounded-2xl shadow-sm hover:shadow-lg transition-shadow">
+
+              {/* IMAGE */}
+              <img
+                src={product.image}
+                alt={product.title}
+                className="h-56 w-full object-cover rounded-t-2xl"
+              />
+
+              {/* HEADER */}
+              <CardHeader>
+                <CardTitle className="text-xl">
+                  {product.title}
+                </CardTitle>
+                <CardDescription>
+                  {product.description}
+                </CardDescription>
+              </CardHeader>
+
+              {/* CONTENT */}
+              <CardContent className="flex flex-col flex-grow">
+
+                {/* HIGHLIGHTS */}
+                <div className="grid grid-cols-2 gap-3 text-sm mb-6">
+                  {product.highlights.map((h, i) => (
+                    <div
+                      key={i}
+                      className="flex items-center gap-2"
+                    >
+                      <h.icon className="h-4 w-4 text-primary shrink-0" />
+                      <span className="font-medium">{h.value}</span>
+                    </div>
+                  ))}
                 </div>
-                <CardHeader>
-                  <CardTitle className="text-2xl text-primary font-bold group-hover:text-primary/80 transition-colors">
-                    {product.title}
-                  </CardTitle>
-                  <CardDescription className="text-muted-foreground min-h-[3rem]">
-                    {product.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="flex-grow flex flex-col justify-between space-y-6">
-                  <ul className="space-y-2">
-                    {product.features.map((feature, fIndex) => (
-                      <li key={fIndex} className="flex items-center gap-2 text-sm font-medium">
-                        <ChevronRight className="h-4 w-4 text-primary" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                  <Button
-                    onClick={() => setIsQuotePopupOpen(true)}
-                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground group"
-                  >
-                    Get a Quote <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </Button>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </div>
+
+                {/* BUTTONS – CRITICAL FIX */}
+                <div className="mt-auto">
+                  <div className="grid grid-cols-1 gap-3">
+                    <Button
+                      variant="outline"
+                      className="w-full"
+                      onClick={() => setActiveProduct(product)}
+                    >
+                      View Specs
+                    </Button>
+
+                    <Button
+                      className="w-full"
+                      onClick={() => setIsQuoteOpen(true)}
+                    >
+                      Get Quote <ArrowRight className="ml-2 h-4 w-4" />
+                    </Button>
+                  </div>
+                </div>
+
+              </CardContent>
+            </Card>
+          </motion.div>
+        ))}
       </section>
 
-      <section className="py-24 px-4 md:px-8">
-        <div className="max-w-full mx-auto bg-primary text-primary-foreground rounded-3xl p-8 md:p-16 text-center space-y-8 overflow-hidden relative">
-          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.1),transparent)]" />
-          <h2 className="text-3xl md:text-5xl font-bold relative z-10">Don&apos;t See What You Need?</h2>
-          <p className="text-xl opacity-90 relative z-10 max-w-2xl mx-auto">
-            We provide custom engineering for specialized building requirements. Contact our experts to design a system
-            that fits your vision.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center relative z-10 pt-4">
-            <Button
-              size="lg"
-              variant="secondary"
-              onClick={() => setIsQuotePopupOpen(true)}
-              className="font-bold text-lg"
-            >
-              Custom Engineering Quote
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="bg-transparent border-white/20 hover:bg-white/10 text-white font-bold text-lg"
-            >
-              Download Full Catalog
-            </Button>
-          </div>
-        </div>
-      </section>
+      {/* SPECS MODAL */}
+      <Dialog open={!!activeProduct} onOpenChange={() => setActiveProduct(null)}>
+        <DialogContent className="max-w-lg">
+          {activeProduct && (
+            <>
+              <DialogHeader>
+                <DialogTitle>
+                  {activeProduct.title} – Specifications
+                </DialogTitle>
+              </DialogHeader>
+
+              <div className="space-y-3 text-sm">
+                {Object.entries(activeProduct.specs).map(([k, v]) => (
+                  <div
+                    key={k}
+                    className="flex justify-between border-b pb-2"
+                  >
+                    <span className="text-muted-foreground">{k}</span>
+                    <span className="font-medium">{String(v)}</span>
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
 
       <Footer />
     </div>
