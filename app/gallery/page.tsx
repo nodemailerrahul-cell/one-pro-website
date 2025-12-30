@@ -28,7 +28,7 @@ const elevatorTypes = [
   { id: "home-lift", title: "Home Lift" },
   { id: "hospital", title: "Hospital Lift" },
   { id: "goods-lift", title: "Goods Lift" },
-  { id: "panoramic-lift", title: "Panoramic Lift" },
+  { id: "panoramic_lift", title: "Panoramic Lift" },
   { id: "dumbwaiter-lift", title: "Dumbwaiter Lift" },
 ]
 
