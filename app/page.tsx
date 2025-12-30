@@ -384,11 +384,11 @@ const support = useCountUp(24, statsVisible)
 
           <div className="flex gap-6 text-sm">
             <div>
-              <p className="text-2xl font-bold">25+</p>
+              <p className="text-2xl font-bold">30+</p>
               <p className="text-muted-foreground">Years Experience</p>
             </div>
             <div>
-              <p className="text-2xl font-bold">5K+</p>
+              <p className="text-2xl font-bold">800+</p>
               <p className="text-muted-foreground">Installations</p>
             </div>
             <div>
