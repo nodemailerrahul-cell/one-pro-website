@@ -21,13 +21,10 @@ export function Footer() {
               <a href="#" className="hover:text-accent transition-colors">
                 <Facebook size={20} />
               </a>
-              <a href="#" className="hover:text-accent transition-colors">
+              <a href="https://x.com/oneproelevators" className="hover:text-accent transition-colors">
                 <Twitter size={20} />
               </a>
-              <a href="#" className="hover:text-accent transition-colors">
-                <Linkedin size={20} />
-              </a>
-              <a href="#" className="hover:text-accent transition-colors">
+              <a href="https://www.instagram.com/oneproelevators" className="hover:text-accent transition-colors">
                 <Instagram size={20} />
               </a>
             </div>

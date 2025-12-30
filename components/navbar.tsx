@@ -24,7 +24,7 @@ export function Navbar({ onQuoteClick }: NavbarProps) {
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/about", label: "About" },
-    { href: "/services", label: "Services" }, // Added Services link
+    { href: "/services", label: "Services" },
     { href: "/products", label: "Products" },
     { href: "/gallery", label: "Gallery" },
     { href: "/contact", label: "Contact" },

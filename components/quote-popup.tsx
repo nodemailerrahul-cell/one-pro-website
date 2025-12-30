@@ -38,11 +38,42 @@ export function QuotePopup({ isOpen, onClose }: QuotePopupProps) {
     message: "",
   })
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    console.log("Quote request submitted:", formData)
+ const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault()
+
+  try {
+    const res = await fetch("/api/send-email", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+
+    const data = await res.json()
+
+    if (!res.ok) {
+      throw new Error(data.error || "Something went wrong")
+    }
+
+    console.log("Quote sent successfully")
     onClose()
+
+    // Optional: reset form
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      company: "",
+      elevatorType: "",
+      message: "",
+    })
+  } catch (err) {
+    console.error("Submit error:", err)
+    alert("Failed to submit quote. Please try again.")
   }
+}
+
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>

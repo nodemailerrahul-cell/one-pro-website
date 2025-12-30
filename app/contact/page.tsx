@@ -42,11 +42,46 @@ export default function ContactPage() {
     return () => observer.disconnect()
   }, [])
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    console.log("Form submitted:", formData)
-    // Handle form submission
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault()
+
+  try {
+    const res = await fetch("/api/send-email", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        company: formData.company,
+        elevatorType: formData.service, // mapping
+        message: formData.message,
+      }),
+    })
+
+    const data = await res.json()
+
+    if (!res.ok) {
+      throw new Error(data.error || "Failed to submit")
+    }
+alert("Form has been submitted. We will contact you soon.")
+    // optional: clear form after success
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      company: "",
+      service: "",
+      message: "",
+    })
+  } catch (error) {
+    console.error("Contact form submit error:", error)
+    alert("Failed to send message. Please try again.")
   }
+}
+
 
   return (
     <div className="min-h-screen">
@@ -319,18 +354,18 @@ export default function ContactPage() {
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="animate-on-scroll opacity-0">
-            <h2 className="text-3xl font-bold text-center mb-8">Visit Our Showroom</h2>
-            <div className="h-96 bg-muted rounded-lg overflow-hidden shadow-xl">
-              <img src="/office-location-map.jpg?key=map" alt="Location Map" className="w-full h-full object-cover" />
-            </div>
-            <div className="text-center mt-6">
-              <p className="text-muted-foreground mb-4">
-                Schedule a visit to see our elevator systems in person and discuss your project with our experts
-              </p>
-              <Button size="lg" onClick={() => setIsQuotePopupOpen(true)}>
-                Schedule a Visit
-              </Button>
-            </div>
+            <h2 className="text-3xl font-bold text-center mb-8">Visit Our Office</h2>
+            <div className="w-full h-[80vh] rounded-lg overflow-hidden shadow-xl">
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.423396496812!2d77.5191686!3d12.9447371!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae3f20b0c5ed23%3A0x30e55a77e42a57ce!2sONE%20PRO%20ELEVATORS!5e0!3m2!1sen!2sin!4v1767084982860!5m2!1sen!2sin"
+    className="w-full h-full border-0"
+    allowFullScreen
+    loading="lazy"
+    referrerPolicy="no-referrer-when-downgrade"
+  />
+</div>
+
+            
           </div>
         </div>
       </section>

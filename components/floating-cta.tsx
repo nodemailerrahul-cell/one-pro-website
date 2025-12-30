@@ -37,7 +37,7 @@ export function FloatingCTA({ onQuoteClick }: FloatingCTAProps) {
         asChild
         className="shadow-lg hover:shadow-xl transition-all hover:scale-105 group"
       >
-        <a href="tel:+1234567890">
+        <a href="tel:+91-9590373137">
           <Phone className="mr-2 w-5 h-5 group-hover:rotate-12 transition-transform" />
           Call Now
         </a>
