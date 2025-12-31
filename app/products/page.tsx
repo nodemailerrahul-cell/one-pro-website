@@ -36,7 +36,7 @@ import {
 const products = [
   {
     title: "Passenger Elevator",
-    image: "/pass.jpg",
+    image: "/images/home-lift/7.jpeg",
     description: "High-speed elevators for residential and commercial buildings.",
     highlights: [
       { icon: Gauge, value: "Up to 1 m/s" },
