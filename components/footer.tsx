@@ -1,6 +1,7 @@
 import Link from "next/link"
 import Image from "next/image"
-import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin } from "lucide-react"
+import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin, Youtube } from "lucide-react"
+import { FaPinterestP } from "react-icons/fa"
 
 export function Footer() {
   return (
@@ -32,6 +33,13 @@ export function Footer() {
               </a>
               <a href="https://www.instagram.com/oneproelevators" className="hover:text-accent transition-colors">
                 <Instagram size={20} />
+              </a>
+              <a href="https://youtube.com/@oneproelevators?si=G7fzdnvD_xL1uFZO" className="hover:text-accent transition-colors">
+                <Youtube size={20} />
+              </a>
+              <a href="https://pin.it/1IMYHNqFn" className="hover:text-accent transition-colors">
+                         <FaPinterestP size={20} />
+
               </a>
             </div>
           </div>

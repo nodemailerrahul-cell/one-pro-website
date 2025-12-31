@@ -21,6 +21,8 @@ import {
   Phone,
   Mail,
   MapPin,
+  Target,BadgeCheck,
+  ShieldCheck,Gauge,Settings,
 } from "lucide-react"
 import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
@@ -115,17 +117,16 @@ const support = useCountUp(24, statsVisible)
 
   <div className="container mx-auto px-4 py-32 relative z-10">
     <div className="max-w-4xl mx-auto text-center space-y-8">
-     <span className="inline-block px-4 py-2 bg-primary text-white rounded-full text-sm font-medium">
+     <span className="inline-block px-6 py-2 bg-primary text-white rounded-full text-lg font-medium">
   Welcome to One Pro Elevators
 </span>
 
 <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight">
-  Built on Quality. Driven by Safety.
+  Built on Quality.
 </h1>
 
 <p className="text-xl md:text-2xl text-white/90 leading-relaxed max-w-3xl mx-auto">
-  Designing, manufacturing, and servicing reliable elevator solutions that
-  elevate residential, commercial, and industrial spaces across India.
+  One Pro Elevators delivers customized elevator and escalator solutions for homes, offices, hospitals, and industries, integrating advanced safety features, smooth ride quality, and space‑saving engineering in every project
 </p>
 
 
@@ -155,8 +156,14 @@ const support = useCountUp(24, statsVisible)
 
 
       {/* Stats Section */}
-    <section className="py-20 bg-background" ref={statsRef}>
+<section className="py-20 bg-background" ref={statsRef}>
   <div className="container mx-auto px-4">
+
+    {/* OUR VALUES HEADING */}
+    <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 animate-on-scroll opacity-0">
+      Our Values
+    </h2>
+
     <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
 
       <div className="text-center animate-on-scroll opacity-0 p-6 rounded-lg hover:bg-muted transition-colors">
@@ -190,6 +197,7 @@ const support = useCountUp(24, statsVisible)
     </div>
   </div>
 </section>
+
 
 
       {/* Services Section */}
@@ -261,6 +269,307 @@ const support = useCountUp(24, statsVisible)
           </div>
         </div>
       </section>
+{/* ================= ABOUT SECTION ================= */}
+<section className="py-24 bg-background">
+  <div className="container mx-auto px-4">
+    <div className="grid lg:grid-cols-2 gap-16 items-center">
+      
+      {/* LEFT IMAGE */}
+      <div className="animate-on-scroll opacity-0">
+        <div className="relative h-[520px] rounded-2xl overflow-hidden shadow-xl">
+          <img
+            src="/modern-elevator-manufacturing-facility.jpg"
+            alt="About One Pro Elevators Bangalore"
+            className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+          />
+        </div>
+      </div>
+
+      {/* RIGHT CONTENT */}
+      <div
+        className="space-y-6 animate-on-scroll opacity-0"
+        style={{ animationDelay: "0.2s" }}
+      >
+        <span className="inline-block px-4 py-2 rounded-full bg-accent/15 text-accent text-sm font-semibold">
+          About One Pro Elevators
+        </span>
+
+        <h2 className="text-4xl md:text-5xl font-bold text-balance">
+          Trusted Elevator Experts in Bangalore
+        </h2>
+
+        <p className="text-lg text-muted-foreground leading-relaxed">
+          One Pro Elevators is a Bengaluru-based elevator company specializing in
+          elevator installation, AMC maintenance, modernization, and repairs for
+          residential, commercial, and hospital buildings.
+        </p>
+
+        <p className="text-lg text-muted-foreground leading-relaxed">
+          With decades of combined industry experience, we deliver safe,
+          reliable, and compliant elevator solutions across Bangalore including
+          Whitefield, Electronic City, Hebbal, Yelahanka, and Sarjapur Road.
+        </p>
+
+        {/* FEATURES */}
+        <div className="grid sm:grid-cols-2 gap-4 pt-4">
+          {[
+            {
+              icon: <Target className="w-6 h-6" />,
+              title: "Precision Engineering",
+            },
+            {
+              icon: <Users className="w-6 h-6" />,
+              title: "Local Service Team",
+            },
+            {
+              icon: <Award className="w-6 h-6" />,
+              title: "Safety & Compliance",
+            },
+            {
+              icon: <TrendingUp className="w-6 h-6" />,
+              title: "Modern Technology",
+            },
+          ].map((item, index) => (
+            <div
+              key={index}
+              className="flex items-center gap-4 p-4 bg-muted/40 rounded-xl"
+            >
+              <div className="w-12 h-12 flex items-center justify-center rounded-lg bg-accent/15 text-accent">
+                {item.icon}
+              </div>
+              <p className="font-semibold">{item.title}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* CTA */}
+        <div className="pt-6 flex flex-wrap gap-4">
+          <Button
+            size="lg"
+            onClick={() => setIsQuotePopupOpen(true)}
+            className="group"
+          >
+            Get Free Consultation
+            <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+          </Button>
+
+          <Button size="lg" variant="outline" asChild>
+            <Link href="/about">Learn More About Us</Link>
+          </Button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{/* ================= END ABOUT SECTION ================= */}
+
+
+{/* ================= SERVICES PREVIEW ================= */}
+<section className="py-24 bg-muted/50">
+  <div className="container mx-auto px-4">
+    <div className="text-center max-w-3xl mx-auto mb-16 animate-on-scroll opacity-0">
+      <h2 className="text-4xl md:text-5xl font-bold mb-4">
+        Our Elevator Services
+      </h2>
+      <p className="text-lg text-muted-foreground leading-relaxed">
+        End-to-end elevator solutions — from installation to lifelong
+        maintenance & support.
+      </p>
+    </div>
+
+    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+      {[
+        {
+          title: "New Installation",
+          icon: <BadgeCheck className="h-8 w-8" />,
+          text: "Custom-designed elevators engineered for safety and performance.",
+        },
+        {
+          title: "Maintenance & AMC",
+          icon: <ShieldCheck className="h-8 w-8" />,
+          text: "Preventive maintenance with 24/7 breakdown support.",
+        },
+        {
+          title: "Modernization",
+          icon: <Clock className="h-8 w-8" />,
+          text: "Upgrade old elevators with modern technology & safety.",
+        },
+        {
+          title: "Emergency Repairs",
+          icon: <Users className="h-8 w-8" />,
+          text: "Fast-response technicians with genuine spare parts.",
+        },
+      ].map((item, index) => (
+        <Card
+          key={index}
+          className="animate-on-scroll opacity-0 hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
+        >
+          <CardContent className="p-8 text-center space-y-4">
+            <div className="mx-auto w-14 h-14 flex items-center justify-center rounded-xl bg-primary/10 text-primary">
+              {item.icon}
+            </div>
+            <h3 className="text-xl font-bold">{item.title}</h3>
+            <p className="text-muted-foreground text-sm leading-relaxed">
+              {item.text}
+            </p>
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+
+    <div className="text-center mt-12 animate-on-scroll opacity-0">
+      <Button size="lg" asChild>
+        <Link href="/services">
+          View All Services
+        </Link>
+      </Button>
+    </div>
+  </div>
+</section>
+{/* ================= END SERVICES PREVIEW ================= */}
+
+{/* ================= PRODUCTS PREVIEW ================= */}
+<section className="py-24 bg-background">
+  <div className="container mx-auto px-4">
+
+    {/* Heading */}
+    <div className="text-center max-w-3xl mx-auto mb-16 animate-on-scroll opacity-0">
+      <h2 className="text-4xl md:text-5xl font-bold mb-4">
+        Our Elevator Products
+      </h2>
+      <p className="text-lg text-muted-foreground leading-relaxed">
+        Designed for safety, performance, and long-term reliability across
+        residential, commercial, and industrial buildings.
+      </p>
+    </div>
+
+    {/* Grid */}
+    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      {[
+        {
+          title: "Passenger Elevator",
+          image: "/images/home-lift/7.jpeg",
+          points: [
+            { icon: Users, text: "6–20 Persons" },
+            { icon: Gauge, text: "Up to 1 m/s" },
+          ],
+        },
+        {
+          title: "Home Elevator",
+          image: "/images/home-lift/1.jpeg",
+          points: [
+            { icon: ShieldCheck, text: "Safe & Silent" },
+            { icon: Settings, text: "Single / 3 Phase" },
+          ],
+        },
+        {
+          title: "Hospital Elevator",
+          image: "/hospital-stretcher-elevator.jpg",
+          points: [
+            { icon: Users, text: "Stretcher Ready" },
+            { icon: ShieldCheck, text: "Emergency Mode" },
+          ],
+        },
+        {
+          title: "Goods Elevator",
+          image: "/images/goods-lift/1.jpeg",
+          points: [
+            { icon: Users, text: "500 kg +" },
+            { icon: Settings, text: "Industrial Use" },
+          ],
+        },
+      ].map((item, index) => (
+        <Card
+          key={index}
+          className="animate-on-scroll opacity-0 overflow-hidden hover:shadow-xl transition-all duration-300"
+        >
+          <img
+            src={item.image}
+            alt={item.title}
+            className="h-44 w-full object-cover"
+          />
+
+          <CardContent className="p-6 space-y-4">
+            <h3 className="text-xl font-bold">{item.title}</h3>
+
+            <div className="space-y-2 text-sm">
+              {item.points.map((p, i) => (
+                <div key={i} className="flex items-center gap-2">
+                  <p.icon className="h-4 w-4 text-primary" />
+                  <span className="text-muted-foreground">{p.text}</span>
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+
+    {/* CTA */}
+    <div className="text-center mt-12 animate-on-scroll opacity-0">
+      <Button size="lg" asChild className="group">
+        <Link href="/products">
+          View All Elevator Products
+          <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+        </Link>
+      </Button>
+    </div>
+  </div>
+</section>
+{/* ================= END PRODUCTS PREVIEW ================= */}
+{/* ================= GALLERY PREVIEW ================= */}
+<section className="py-24 bg-muted/50">
+  <div className="container mx-auto px-4">
+
+    {/* Heading */}
+    <div className="text-center max-w-3xl mx-auto mb-16 animate-on-scroll opacity-0">
+      <h2 className="text-4xl md:text-5xl font-bold mb-4">
+        Elevator  Gallery
+      </h2>
+      <p className="text-lg text-muted-foreground leading-relaxed">
+        A glimpse of our elevators across residential,
+        commercial, hospital, and industrial projects.
+      </p>
+    </div>
+
+    {/* Grid */}
+    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      {[
+        "/images/home-lift/1.jpeg",
+        "/images/hospital/1.jpeg",
+        "/images/goods-lift/1.jpeg",
+        "/images/panoramic-lift/1.jpeg",
+        "/images/glass-lift/1.jpeg",
+        "/images/dumbwaiter-lift/1.jpeg",
+        "/images/home-lift/2.jpeg",
+        "/images/panoramic-lift/2.jpeg",
+      ].map((src, index) => (
+        <div
+          key={index}
+          className="group overflow-hidden rounded-xl animate-on-scroll opacity-0"
+        >
+          <img
+            src={src}
+            alt="Elevator installation by One Pro Elevators"
+            className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
+          />
+        </div>
+      ))}
+    </div>
+
+    {/* CTA */}
+    <div className="text-center mt-12 animate-on-scroll opacity-0">
+      <Button size="lg" asChild className="group">
+        <Link href="/gallery">
+          View Full Gallery
+          <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+        </Link>
+      </Button>
+    </div>
+
+  </div>
+</section>
+{/* ================= END GALLERY PREVIEW ================= */}
 
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">

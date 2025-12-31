@@ -150,7 +150,7 @@ const products = [
 
   {
     title: "Hydraulic Elevator",
-    image: "/hydraulic-elevator-mechanism.jpg",
+    image: "/hyd.jpeg",
     description: "Cost-effective solution for low-rise buildings.",
     highlights: [
       { icon: Gauge, value: "0.5 m/s" },
