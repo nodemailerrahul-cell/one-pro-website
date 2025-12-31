@@ -118,6 +118,123 @@ export default function ServicesPage() {
           </div>
         </div>
       </section>
+<section className="bg-secondary/30 border border-primary/10 rounded-3xl p-8 md:p-14 space-y-14">
+  {/* Heading */}
+  <div className="text-center max-w-3xl mx-auto space-y-4">
+    <h2 className="text-3xl md:text-5xl font-bold text-primary">
+      After Sales Is Our Specialty
+    </h2>
+    <p className="text-lg text-muted-foreground leading-relaxed">
+      All our customers agree — the main reason to choose our elevators is not
+      just cutting-edge products or expert sales, but the unmatched quality of
+      our after-sales service.
+    </p>
+  </div>
+
+  {/* Intro */}
+  <div className="max-w-4xl mx-auto text-center text-muted-foreground leading-relaxed">
+    <p>
+      From the moment you book your lift, you are assigned a dedicated
+      <span className="font-medium text-foreground"> Customer Care Representative </span>
+      who manages your project end-to-end and remains your single point of
+      contact for years to come.
+    </p>
+  </div>
+
+  {/* Timeline */}
+  <div className="grid md:grid-cols-3 gap-8">
+    {/* Before Installation */}
+    <Card className="border-primary/10 bg-background">
+      <CardHeader>
+        <CardTitle className="text-xl flex items-center gap-2">
+          <BadgeCheck className="h-5 w-5 text-primary" />
+          Before Installation
+        </CardTitle>
+      </CardHeader>
+      <CardContent className="space-y-3 text-muted-foreground">
+        <p>• Liaising with your construction team</p>
+        <p>• Site inspection & readiness checks</p>
+        <p>• Delivery planning & coordination</p>
+      </CardContent>
+    </Card>
+
+    {/* After Installation */}
+    <Card className="border-primary/10 bg-background">
+      <CardHeader>
+        <CardTitle className="text-xl flex items-center gap-2">
+          <ShieldCheck className="h-5 w-5 text-primary" />
+          After Installation
+        </CardTitle>
+      </CardHeader>
+      <CardContent className="space-y-3 text-muted-foreground">
+        <p>• Quality checks as per strict standards</p>
+        <p>• Safe commissioning & compliance</p>
+        <p>• Handover & user training</p>
+      </CardContent>
+    </Card>
+
+    {/* Long Term */}
+    <Card className="border-primary/10 bg-background">
+      <CardHeader>
+        <CardTitle className="text-xl flex items-center gap-2">
+          <Clock className="h-5 w-5 text-primary" />
+          For Decades to Come
+        </CardTitle>
+      </CardHeader>
+      <CardContent className="space-y-3 text-muted-foreground">
+        <p>• Timely preventive maintenance</p>
+        <p>• Repair coordination & fixes</p>
+        <p>• Genuine spare parts support</p>
+      </CardContent>
+    </Card>
+  </div>
+
+  {/* Factory Promise */}
+  <div className="bg-primary/5 border border-primary/15 rounded-2xl p-8 md:p-12">
+    <div className="grid md:grid-cols-2 gap-10 items-center">
+      <div className="space-y-6">
+        <h3 className="text-2xl md:text-3xl font-bold">
+          The Factory-Direct After-Sales Promise
+        </h3>
+        <p className="text-muted-foreground leading-relaxed">
+          One Pro Elevators believes the secret to long-term success is
+          world-class after-sales support. Over
+          <span className="font-semibold text-foreground">
+            {" "}35% of our business comes from referrals
+          </span>,
+          driven by reliability, transparency, and technical excellence.
+        </p>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="flex items-center gap-2 font-medium">
+            <ShieldCheck className="h-5 w-5 text-primary" />
+            No Outsourcing
+          </div>
+          <div className="flex items-center gap-2 font-medium">
+            <Users className="h-5 w-5 text-primary" />
+            Technicians Trained in Sweden
+          </div>
+          <div className="flex items-center gap-2 font-medium">
+            <BadgeCheck className="h-5 w-5 text-primary" />
+            German Technology Standards
+          </div>
+          <div className="flex items-center gap-2 font-medium">
+            <Clock className="h-5 w-5 text-primary" />
+            Local Spare Parts Warehouse
+          </div>
+        </div>
+      </div>
+
+      <div className="relative aspect-video rounded-xl overflow-hidden border border-primary/20">
+        <img
+          src="/sales.jpg"
+          alt="After Sales Support"
+          className="object-cover w-full h-full"
+        />
+      </div>
+    </div>
+  </div>
+</section>
 
      <section className="max-w-4xl mx-auto w-full space-y-10">
   <div className="text-center space-y-3">
@@ -130,43 +247,64 @@ export default function ServicesPage() {
     </p>
   </div>
 
-  <Accordion type="single" collapsible className="w-full space-y-4">
-    {[
-      {
-        q: "How can I request elevator maintenance or repair?",
-        a: "You can contact our support team via phone, WhatsApp, or the enquiry form on our website. We schedule technician visits based on urgency and location, including same-day support where possible.",
-      },
-      {
-        q: "Do you provide 24/7 emergency breakdown support?",
-        a: "Yes. We offer 24/7 emergency support for elevator breakdowns and passenger entrapments. Our response time typically ranges from 30 to 90 minutes depending on your city and service contract.",
-      },
-      {
-        q: "How often should elevators be serviced in India?",
-        a: "As per Indian Lift Rules, elevators should be serviced at least once every month. High-usage elevators in apartments, hospitals, and commercial buildings may require more frequent maintenance.",
-      },
-      {
-        q: "Do you offer Annual Maintenance Contracts (AMC)?",
-        a: "Yes. We offer flexible AMC plans including basic, comprehensive, and premium options covering preventive maintenance, breakdown support, and genuine spare parts.",
-      },
-      {
-        q: "Are your technicians trained and certified?",
-        a: "All our technicians are trained in Indian Lift Rules, safety procedures, and modern elevator systems. Regular skill upgrades and safety training are conducted to ensure compliance and reliability.",
-      },
-    ].map((item, index) => (
-      <AccordionItem
-        key={index}
-        value={`item-${index}`}
-        className="border border-primary/10 rounded-xl px-6 bg-secondary/20 hover:bg-secondary/30 transition-all"
-      >
-        <AccordionTrigger className="text-left text-lg font-semibold py-5">
-          {item.q}
-        </AccordionTrigger>
-        <AccordionContent className="text-muted-foreground leading-relaxed pb-5">
-          {item.a}
-        </AccordionContent>
-      </AccordionItem>
-    ))}
-  </Accordion>
+<Accordion type="single" collapsible className="w-full space-y-4">
+  {[
+    {
+      q: "How often should a home lift be serviced?",
+      a: "The service frequency depends on the lift technology. With Cibes screw-driven technology, maintenance is minimal. Typically, only two scheduled services per year are required, as these lifts are designed for reliability, efficiency, and low wear.",
+    },
+    {
+      q: "Can I get service support even after the warranty period ends?",
+      a: "Yes. Full service support is available even after the warranty period ends. Our maintenance and AMC packages are tailored based on usage conditions to ensure long-term performance and reliability.",
+    },
+    {
+      q: "Are genuine spare parts used during maintenance?",
+      a: "Yes. We always use genuine, factory-original spare parts sourced directly from our Swedish manufacturing facility. This ensures maximum safety, durability, and smooth operation with fewer breakdowns.",
+    },
+    {
+      q: "Why is regular lift maintenance important for home elevators?",
+      a: "Regular maintenance keeps your home lift safe, smooth, and long-lasting. Preventive servicing helps identify issues early, avoid costly repairs, and ensure compliance with safety standards.",
+    },
+    {
+      q: "Can I get emergency lift repair after installation?",
+      a: "Yes. With our comprehensive maintenance packages, emergency repair support is available even after installation. Our trained technicians respond quickly to keep your lift operating safely.",
+    },
+    {
+      q: "How can I request elevator maintenance or repair?",
+      a: "You can contact our support team via phone, WhatsApp, or the enquiry form on our website. Technician visits are scheduled based on urgency and location, including same-day support where possible.",
+    },
+    {
+      q: "Do you provide 24/7 emergency breakdown support?",
+      a: "Yes. We offer 24/7 emergency support for elevator breakdowns and passenger entrapments. Response time typically ranges from 30 to 90 minutes depending on your city and service agreement.",
+    },
+    {
+      q: "How often should elevators be serviced in India?",
+      a: "As per Indian Lift Rules, elevators should be serviced at least once every month. High-usage elevators in apartments, hospitals, and commercial buildings may require more frequent maintenance.",
+    },
+    {
+      q: "Do you offer Annual Maintenance Contracts (AMC)?",
+      a: "Yes. We offer flexible AMC plans including basic, comprehensive, and premium options covering preventive maintenance, breakdown support, and genuine spare parts.",
+    },
+    {
+      q: "Are your technicians trained and certified?",
+      a: "All our technicians are trained in Indian Lift Rules, safety protocols, and modern elevator systems. Regular skill upgrades and safety training ensure compliance and service excellence.",
+    },
+  ].map((item, index) => (
+    <AccordionItem
+      key={index}
+      value={`item-${index}`}
+      className="border border-primary/10 rounded-xl px-6 bg-secondary/20 hover:bg-secondary/30 transition-all"
+    >
+      <AccordionTrigger className="text-left text-lg font-semibold py-5">
+        {item.q}
+      </AccordionTrigger>
+      <AccordionContent className="text-muted-foreground leading-relaxed pb-5">
+        {item.a}
+      </AccordionContent>
+    </AccordionItem>
+  ))}
+</Accordion>
+
 </section>
 
 

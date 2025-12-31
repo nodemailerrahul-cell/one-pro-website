@@ -45,8 +45,8 @@ const products = [
       { icon: Settings, value: "MR / MRL" },
     ],
     specs: {
-      Speed: "Up to 1 m/s",
-      Capacity: "408 – 1600 kg",
+      Speed: "Starts from 1 m/s",
+      Capacity: "450 – 1600 kg",
       Material: "SS 304 Grade (1.2mm)",
       Drive: "Traction",
       Control: "VVVF",

@@ -30,7 +30,7 @@ export default function LeadPopup() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setOpen(true)
-    }, 7000)
+    }, 5000)
 
     return () => clearTimeout(timer)
   }, [])
@@ -84,6 +84,11 @@ export default function LeadPopup() {
           <p className="mt-2 text-sm text-white/80">
             ⭐ 4.8/5 based on 245+ Google reviews
           </p>
+
+          {/* PRICE BADGE */}
+          <div className="mt-3 inline-block rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold">
+            Starts from <span className="text-[#B9FF66]">₹5.25 Lakhs</span>
+          </div>
         </div>
 
         {/* FORM */}
