@@ -193,7 +193,7 @@ export default function TermsPage() {
                     <br />
                     Phone: +91 95903 73137
                     <br />
-                    Email: oneproelevators@gmail.com
+                    Email: info@oneproelevators.com
                   </p>
                 </section>
               </CardContent>

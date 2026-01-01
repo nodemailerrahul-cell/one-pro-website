@@ -127,8 +127,8 @@ alert("Form has been submitted. We will contact you soon.")
                 icon: <Mail className="w-6 h-6" />,
                 title: "Email Us",
                 description: "Send us a message",
-                action: "Oneproelevators@gmail.com",
-                link: "mailto:Oneproelevators@gmail.com",
+                action: "info@oneproelevators.com",
+                link: "mailto:info@oneproelevators.com",
               },
               {
                 icon: <MessageCircle className="w-6 h-6" />,
@@ -293,7 +293,7 @@ alert("Form has been submitted. We will contact you soon.")
                     <div>
                       <h3 className="font-bold mb-1">Email Addresses</h3>
                       <p className="text-muted-foreground">
-                       Oneproelevators@gmail.com
+                       info@oneproelevators.com
                       </p>
                     </div>
                   </CardContent>

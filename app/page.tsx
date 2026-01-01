@@ -875,8 +875,8 @@ const support = useCountUp(24, statsVisible)
                   <Mail className="w-6 h-6" />
                 </div>
                 <div className="font-bold">Email Us</div>
-                <a href="mailto:Oneproelevators@gmail.com" className="text-primary-foreground/80 hover:text-primary-foreground">
-                 Oneproelevators@gmail.com
+                <a href="mailto:info@oneproelevators.com" className="text-primary-foreground/80 hover:text-primary-foreground">
+                 info@oneproelevators.com
                 </a>
               </div>
               <div className="flex flex-col items-center gap-2">
