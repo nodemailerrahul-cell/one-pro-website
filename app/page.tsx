@@ -117,12 +117,13 @@ const support = useCountUp(24, statsVisible)
 
   <div className="container mx-auto px-4 py-32 relative z-10">
     <div className="max-w-4xl mx-auto text-center space-y-8">
-<h1 className="text-3xl md:text-4xl font-bold text-white leading-tight">
+      <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight">
   Welcome to One Pro Elevators
 </h1>
-<h1 className="text-5xl md:text-7xl font-bold text-white leading-tight">
+<h1 className="text-3xl md:text-4xl font-bold text-white leading-tight">
   Built on Quality.
 </h1>
+
 
 <p className="text-xl md:text-2xl text-white/90 leading-relaxed max-w-3xl mx-auto">
   One Pro Elevators delivers customized elevator and escalator solutions for homes, offices, hospitals, and industries, integrating advanced safety features, smooth ride quality, and space‑saving engineering in every project
@@ -277,7 +278,7 @@ const support = useCountUp(24, statsVisible)
       <div className="animate-on-scroll opacity-0">
         <div className="relative h-[520px] rounded-2xl overflow-hidden shadow-xl">
           <img
-            src="/modern-elevator-manufacturing-facility.jpg"
+            src="/images/home-lift/3.jpeg"
             alt="About One Pro Elevators Bangalore"
             className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
           />
@@ -714,7 +715,7 @@ const support = useCountUp(24, statsVisible)
       >
         <div className="relative h-[600px] rounded-2xl overflow-hidden shadow-2xl">
           <img
-            src="/modern-elevator-engineering.jpg"
+            src="/images/home-lift/3.jpeg"
             alt="One Pro Elevators Engineering"
             className="w-full h-full object-cover scale-105 hover:scale-100 transition-transform duration-700"
           />

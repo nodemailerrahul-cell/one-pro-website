@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     siteName: "One Pro Elevators",
     images: [
       {
-        url: "/modern-elevator-manufacturing-facility.jpg",
+        url: "/images/home-lift/3.jpeg",
         width: 1200,
         height: 630,
         alt: "Elevator installation and maintenance facility in Bangalore by One Pro Elevators",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
       "About One Pro Elevators | Elevator Services in Bangalore",
     description:
       "Elevator installation, AMC, modernization & repair services by One Pro Elevators in Bangalore.",
-    images: ["/modern-elevator-manufacturing-facility.jpg"],
+    images: ["/images/home-lift/3.jpeg"],
   },
 }
 

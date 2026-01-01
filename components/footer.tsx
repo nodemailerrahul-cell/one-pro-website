@@ -105,6 +105,10 @@ export function Footer() {
                 <span className="text-primary-foreground/80">+91-9590373137</span>
               </li>
               <li className="flex items-center gap-2">
+                <Phone size={18} className="flex-shrink-0" />
+                <span className="text-primary-foreground/80">+91- 9980603137</span>
+              </li>
+              <li className="flex items-center gap-2">
                 <Mail size={18} className="flex-shrink-0" />
                 <span className="text-primary-foreground/80">info@oneproelevators.com</span>
               </li>

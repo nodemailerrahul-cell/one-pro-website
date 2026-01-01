@@ -62,7 +62,7 @@ export default function AboutPage() {
             <div className="animate-on-scroll opacity-0">
               <div className="relative h-[500px] rounded-lg overflow-hidden">
                 <img
-                  src="/modern-elevator-manufacturing-facility.jpg"
+                  src="/images/home-lift/3.jpeg"
                   alt="Elevator installation and maintenance facility in Bangalore by One Pro Elevators"
                   className="w-full h-full object-cover"
                 />

@@ -117,12 +117,18 @@ alert("Form has been submitted. We will contact you soon.")
           <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {[
               {
-                icon: <Phone className="w-6 h-6" />,
-                title: "Call Us",
-                description: "Speak with our team",
-                action: "+91-9590373137",
-                link: "tel:+91-9590373137",
-              },
+  icon: <Phone className="w-6 h-6" />,
+  title: "Call Us",
+  description: "Speak with our team",
+  action1: {
+    label: "+91 95903 73137",
+    link: "tel:+919590373137",
+  },
+  action2: {
+    label: "+91 99806 03137",
+    link: "tel:+919980603137",
+  },
+},
               {
                 icon: <Mail className="w-6 h-6" />,
                 title: "Email Us",
@@ -149,12 +155,30 @@ alert("Form has been submitted. We will contact you soon.")
                   </div>
                   <h3 className="font-bold text-lg">{item.title}</h3>
                   <p className="text-sm text-muted-foreground">{item.description}</p>
-                  <a
-                    href={item.link}
-                    className="inline-block text-accent font-medium hover:underline group-hover:translate-x-1 transition-transform"
-                  >
-                    {item.action}
-                  </a>
+                 {item.action1 && item.action2 ? (
+  <div className="space-y-1">
+    <a
+      href={item.action1.link}
+      className="block text-accent font-medium hover:underline"
+    >
+      {item.action1.label}
+    </a>
+    <a
+      href={item.action2.link}
+      className="block text-accent font-medium hover:underline"
+    >
+      {item.action2.label}
+    </a>
+  </div>
+) : (
+  <a
+    href={item.link}
+    className="inline-block text-accent font-medium hover:underline group-hover:translate-x-1 transition-transform"
+  >
+    {item.action}
+  </a>
+)}
+
                 </CardContent>
               </Card>
             ))}
@@ -179,7 +203,7 @@ alert("Form has been submitted. We will contact you soon.")
                       <Label htmlFor="name">Full Name *</Label>
                       <Input
                         id="name"
-                        placeholder="John Smith"
+                        placeholder=""
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         required
@@ -190,7 +214,7 @@ alert("Form has been submitted. We will contact you soon.")
                       <Input
                         id="email"
                         type="email"
-                        placeholder="john@example.com"
+                        placeholder=""
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         required
@@ -201,7 +225,7 @@ alert("Form has been submitted. We will contact you soon.")
                       <Input
                         id="phone"
                         type="tel"
-                        placeholder="+91 6363053425"
+                        placeholder=""
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                         required
@@ -227,7 +251,7 @@ alert("Form has been submitted. We will contact you soon.")
                       <Label htmlFor="message">Message *</Label>
                       <Textarea
                         id="message"
-                        placeholder="Tell us about your elevator needs..."
+                        placeholder=""
                         rows={5}
                         value={formData.message}
                         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
@@ -279,7 +303,7 @@ alert("Form has been submitted. We will contact you soon.")
                     <div>
                       <h3 className="font-bold mb-1">Phone Numbers</h3>
                       <p className="text-muted-foreground">
-                        91-9590373137
+                        91-9590373137 /  91-9980603137
                       </p>
                     </div>
                   </CardContent>

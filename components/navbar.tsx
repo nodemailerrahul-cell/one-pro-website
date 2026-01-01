@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import {
   Menu,
   X,
@@ -13,7 +13,6 @@ import {
   Instagram,
 } from "lucide-react"
 import { FaPinterestP } from "react-icons/fa"
-
 
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
@@ -38,81 +37,70 @@ export function Navbar({ onQuoteClick }: NavbarProps) {
     <nav className="fixed top-0 left-0 right-0 z-50">
 
       {/* ================= TOP INFO BAR ================= */}
-     {/* ================= TOP INFO BAR ================= */}
-{/* ================= TOP INFO BAR ================= */}
-{/* ================= TOP INFO BAR ================= */}
-<div className="bg-primary text-primary-foreground text-sm">
-  <div className="container mx-auto px-4">
-    <div className="flex items-center justify-between py-2">
+      <div className="bg-primary text-primary-foreground text-sm">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center py-2">
 
-      {/* DESKTOP – LEFT (EMAIL) */}
-      <a
-        href="mailto:info@oneproelevators.com"
-        className="hidden sm:flex items-center gap-2 hover:underline"
-      >
-        <Mail size={16} />
-        info@oneproelevators.com
-      </a>
+            {/* LEFT – EMAIL */}
+            <div className="hidden sm:flex flex-1">
+              <a
+                href="mailto:info@oneproelevators.com"
+                className="flex items-center gap-2 hover:underline"
+              >
+                <Mail size={16} />
+                info@oneproelevators.com
+              </a>
+            </div>
 
-{/* DESKTOP – RIGHT (CALL + SOCIALS) */}
-<div className="hidden sm:flex items-center gap-6">
+            {/* CENTER – SOCIAL ICONS */}
+            <div className="hidden sm:flex flex-1 justify-center">
+              <div className="flex items-center gap-4">
+                <a href="https://www.facebook.com/share/14KeoHgnXcW/" aria-label="Facebook" className="hover:opacity-80">
+                  <Facebook size={16} />
+                </a>
+                <a href="https://x.com/oneproelevators" aria-label="X" className="hover:opacity-80">
+                  <Twitter size={16} />
+                </a>
+                <a href="https://youtube.com/@oneproelevators?si=G7fzdnvD_xL1uFZO" aria-label="YouTube" className="hover:opacity-80">
+                  <Youtube size={16} />
+                </a>
+                <a href="https://pin.it/1IMYHNqFn" aria-label="Pinterest" className="hover:opacity-80">
+                  <FaPinterestP size={14} />
+                </a>
+                <a href="https://www.instagram.com/oneproelevators" aria-label="Instagram" className="hover:opacity-80">
+                  <Instagram size={16} />
+                </a>
+              </div>
+            </div>
 
-  {/* Call Details */}
-  <div className="flex items-center gap-3">
-    <span className="font-medium">Contact Us</span>
+            {/* RIGHT – CONTACT NUMBERS */}
+            <div className="hidden sm:flex flex-1 justify-end items-center gap-3">
+              <span className="font-medium">Contact Us</span>
+              <a href="tel:9590373137" className="hover:underline">
+                9590373137
+              </a>
+              <span>/</span>
+              <a href="tel:9980603137" className="hover:underline">
+                9980603137
+              </a>
+            </div>
 
-    <a href="tel:9590373137" className="hover:underline">
-      9590373137
-    </a>
+            {/* MOBILE – CENTER CALL */}
+            <div className="sm:hidden w-full flex items-center justify-center gap-2 whitespace-nowrap font-semibold text-xs">
+              Contact Us
+              <Phone size={14} />
+              <a href="tel:9590373137" className="underline">
+                9590373137
+              </a>
+              <span>/</span>
+              <a href="tel:9980603137" className="underline">
+                9980603137
+              </a>
+            </div>
 
-    <span>/</span>
-
-    <a href="tel:9980603137" className="hover:underline">
-      9980603137
-    </a>
-  </div>
-
-  {/* Social Icons */}
-  <div className="flex items-center gap-3 border-l border-white/30 pl-4">
-    <a href="https://www.facebook.com/share/14KeoHgnXcW/" aria-label="Facebook" className="hover:opacity-80">
-      <Facebook size={16} />
-    </a>
-    <a href="https://x.com/oneproelevators" aria-label="X" className="hover:opacity-80">
-      <Twitter size={16} />
-    </a>
-    <a href="https://youtube.com/@oneproelevators?si=G7fzdnvD_xL1uFZO" aria-label="YouTube" className="hover:opacity-80">
-      <Youtube size={16} />
-    </a>
-    <a href="https://pin.it/1IMYHNqFn" aria-label="Pinterest" className="hover:opacity-80">
-         <FaPinterestP size={14} />
-    </a>
-    <a href="https://www.instagram.com/oneproelevators" aria-label="Instagram" className="hover:opacity-80">
-      <Instagram size={16} />
-    </a>
-  </div>
-
-</div>
-
-
-      {/* MOBILE – CENTER (CALL ONLY) */}
-      <div className="sm:hidden w-full flex items-center justify-center gap-2 whitespace-nowrap font-semibold text-xs">
-        Contact Us
-        <Phone size={14} />
-        <a href="tel:9590373137" className="underline">
-          9590373137
-        </a>
-        <span>/</span>
-        <a href="tel:9980603137" className="underline">
-          9980603137
-        </a>
+          </div>
+        </div>
       </div>
-
-    </div>
-  </div>
-</div>
-
-
-
 
       {/* ================= MAIN NAVBAR ================= */}
       <div className="bg-background/95 backdrop-blur-md shadow-md">
